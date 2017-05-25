@@ -1,0 +1,54 @@
+$burntSienna: #451400;
+$lightCream: #e9e6e0;
+$camel: #a96744;
+
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	width: 100%;
+	background-color: $lightCream;
+}
+
+.navigation {
+	display: flex;
+	background-color: $burntSienna;
+	color: white;
+
+	.navigation__link {
+		padding: 30px;
+		text-transform: lowercase;
+	}
+}
+
+.italic-serif {
+	font-style: italic;
+}
+
+.sans-serif {
+	font-style: initial;
+	font-family: "Helvetica Neue";
+	text-transform: uppercase;
+}
+
+.header--title {
+	text-align: right;
+	padding: 30px;
+	font-size: 1.75rem;
+}
+
+.slider {
+	background-color: white;
+	background-image: url(../img/logo.png);
+	background-repeat: no-repeat;
+	background-size: 170px 170px;
+	background-position: center;
+	padding: 30px;
+	height: 300px;
+}
+
+
+
