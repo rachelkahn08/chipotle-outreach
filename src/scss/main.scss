@@ -38,16 +38,59 @@ html, body {
 	text-align: right;
 	padding: 30px;
 	font-size: 1.75rem;
+	color: $burntSienna;
 }
 
 .slider {
 	background-color: white;
-	background-image: url(../img/logo.png);
-	background-repeat: no-repeat;
-	background-size: 170px 170px;
-	background-position: center;
-	padding: 30px;
 	height: 300px;
+	position: relative;
+
+	.slider__background-image {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-image: url(../img/logo.png);
+		background-repeat: no-repeat;
+		background-size: 200px 200px;
+		background-position: center;
+		opacity: 0.2;
+		z-index: 0;
+	}
+
+	h2 {
+		position: absolute;
+		font-size: 1.5rem;
+		padding: 30px 35px 30px 35px;
+		margin-top: 20px;
+		margin-left: 27%;
+		border: 2px solid $burntSienna;
+	}
+
+	.slider__container {
+		display: flex;
+		width: 100%;
+		padding: 12.5%;
+		justify-content: center;
+	}
+
+	.slider__item {
+		position: absolute;
+		width: 100%;
+		padding: 20px;
+		color: $burntSienna;
+		font-size: 3rem;
+		margin-top: 40px;
+		display: none;
+
+		p {
+			margin-left: 50%;
+		}
+
+		&.visible {
+			display: flex;
+		}
+	}
 }
 
 
