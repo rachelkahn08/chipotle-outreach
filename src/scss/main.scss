@@ -1,4 +1,7 @@
+@import 'mixins';
+
 $burntSienna: #451400;
+$brightRed: #a81612;
 $lightCream: #e9e6e0;
 $camel: #a96744;
 
@@ -17,10 +20,22 @@ html, body {
 	display: flex;
 	background-color: $burntSienna;
 	color: white;
+	border-bottom: 2px solid $camel;
 
 	.navigation__link {
 		padding: 30px;
 		text-transform: lowercase;
+
+		&.active {
+			color: $camel;
+			&:hover {
+				color: $camel;
+			}
+		}
+
+		&:hover {
+			color: $brightRed;
+		}
 	}
 }
 
@@ -62,9 +77,10 @@ html, body {
 		position: absolute;
 		font-size: 1.5rem;
 		padding: 30px 35px 30px 35px;
-		margin-top: 20px;
+		margin-top: 30px;
 		margin-left: 27%;
 		border: 2px solid $burntSienna;
+		color: $burntSienna;
 	}
 
 	.slider__container {
@@ -79,8 +95,8 @@ html, body {
 		width: 100%;
 		padding: 20px;
 		color: $burntSienna;
-		font-size: 3rem;
-		margin-top: 40px;
+		font-size: 3.5rem;
+		margin-top: 35px;
 		display: none;
 
 		p {
@@ -90,6 +106,112 @@ html, body {
 		&.visible {
 			display: flex;
 		}
+	}
+}
+
+.story {
+	width: 100%;
+	position: relative;
+	transition: 0.2s;
+
+	.story-mask {
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.story-container {
+		height: 60vh;
+		width: 1000%;
+		position: relative;
+		display: inline;
+		white-space: nowrap;
+		overflow: visible;
+
+		@include breakpoint(tiny) {
+			height: 50vh;
+		}
+
+		@include breakpoint(smallTablet) {
+			height: 70vh;
+		}
+
+		@include breakpoint(smallTabletLandscape) {
+			height: 100vh;
+		}
+
+		@include breakpoint(largeTablet) {
+			height: 80vh;
+		}
+
+		@include breakpoint(desktop) {
+			height: 105vh;
+		}
+	}
+
+	.story-container__page {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		vertical-align: top;
+		overflow: hidden;
+		margin: 0;
+		
+		.story-container__page--image {
+			height: 100%;
+			width: 100%;
+			background-size: cover;
+			background-position: center;
+		}
+	}
+
+	.story__farmers {
+		.story-container__page--image {
+			background-image: url(../img/barn.jpg);
+		}
+	}
+
+	.story-container__page--text {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.story-button {
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	left: 100%;
+	transform: translate(-100%, -50%);
+	height: 300px;
+	width: 50px;
+	background-color: $burntSienna;
+	opacity: 0.4;
+	transition: 0.2s;
+	display: none;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&.visible {
+		display: initial
+	}
+	
+	&.previous-button{
+		left: 0;	
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+
+	&.next-button {
+		right: 0;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;	
 	}
 }
 

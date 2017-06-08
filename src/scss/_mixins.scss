@@ -1,0 +1,25 @@
+@mixin breakpoint($width) {
+	@if $width == tiny {
+		@media (max-width: 320px) { @content; }
+	}
+
+	@if $width == smallTablet {
+		@media (min-width: 481px) { @content; }
+	}
+
+	@if $width == smallTabletLandscape{
+		@media (min-width: 641px) { @content; }
+	}
+
+	@if $width == largeTablet {
+		@media (min-width: 961px) { @content; }
+	}
+
+	@if $width == desktop {
+		@media (min-width: 1025px) { @content; }
+	}
+
+	@if $width == huge {
+		@media (min-width: 1281px) { @content; }
+	}
+}
