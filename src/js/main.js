@@ -73,7 +73,7 @@ function showNextStorySection(e) {
 
 	var previousButton = storyToMove.parentElement.childNodes[3];
 
-	if (currentSlide == slideshowLength) {
+	if (currentSlide == (slideshowLength - 1)) {
 		this.style.display = 'none';		
 	} 
 
