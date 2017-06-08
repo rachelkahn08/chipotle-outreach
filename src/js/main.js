@@ -32,52 +32,89 @@ function pageLoadListeners() {
 
 pageLoadListeners();
 
-var leftValue;
-
 function showPreviousStorySection(e) {
-	var viewportWidth = document.documentElement.clientWidth;
 	var storyToMove = this.parentElement.children[0];
-	var position = $(storyToMove).position();
-	leftValue = position.left;
-	var newLeftValue = leftValue + viewportWidth;
-	storyToMove.style.left = newLeftValue;
-	leftValue = newLeftValue;
+	var currentSlide = storyToMove.dataset.currentSlide;
+		currentSlide = currentSlide - 0;
+		currentSlide--;
+		console.log(currentSlide);
 
-	var storyWidth = $(storyToMove).width();
+	var slideshowLength = storyToMove.dataset.numberOfSlides;
+		slideshowLength = slideshowLength - 0;
+		
+	storyToMove.setAttribute("data-current-slide", currentSlide);
+
+	var nextButton = this.parentElement.childNodes[3];
+
+
+	if (currentSlide == 0) {
+		this.style.display = 'none';		
+	} 
+
+	if (currentSlide < 0) {
+		nextButton.style.display = 'initial';
+	}
 	
-	var nextButton = this.parentElement.children[2]
-	console.log(nextButton);
-
-	// if (leftValue == ) {
-	// 	this.classList.remove('visible');
-	// } else if (leftValue  0 ) {
-	// 	nextButton.classList
-	// }
-
-	// toggle whether visible based on whether the box is all the way to the right or left
-
+	repositionSlideshow(storyToMove);
 }
 
 function showNextStorySection(e) {
-	console.log(leftValue);
-	var viewportWidth = document.documentElement.clientWidth;
+	
 	var storyToMove = this.parentElement.children[0];
-	var position = $(storyToMove).position();
-	leftValue = position.left;
-	console.log(leftValue);
-	var newLeftValue = leftValue - viewportWidth;
-	storyToMove.style.left = newLeftValue;
-	leftValue = newLeftValue;
-	console.log(leftValue);
+	var currentSlide = storyToMove.dataset.currentSlide;
+		currentSlide = currentSlide - 0;
+		currentSlide++;
+		console.log(currentSlide);
 
-	var storyWidth = $(storyToMove).width();
-	console.dir(storyWidth);
+	var slideshowLength = storyToMove.dataset.numberOfSlides;
+		slideshowLength = slideshowLength - 0;
+		
+	storyToMove.setAttribute('data-current-slide', currentSlide);
 
-	var previousButton = this.parentElement.children[1];
-	console.log(previousButton);
-	previousButton.classList.add('visble');
+	var previousButton = storyToMove.parentElement.childNodes[3];
 
-	// if (newLeftValue < 0) {
-	// 	previousButton.classList.add('visible');
-	// }
+	if (currentSlide == slideshowLength) {
+		this.style.display = 'none';		
+	} 
+
+	if (currentSlide > 0) {
+		previousButton.style.display = 'initial';
+	}
+	
+	repositionSlideshow(storyToMove);
+}
+
+function repositionSlideshow(e) {
+	var viewportWidth = document.documentElement.clientWidth;
+	var numberOfSlides = e.dataset.numberOfSlides;
+	var currentSlide = e.dataset.currentSlide;
+	var newLeftValue = -1 * (viewportWidth * currentSlide);
+	e.style.left = newLeftValue;
+}
+
+//-------------reposition on page resize-------------
+$(window).resize(resizePlaceholder);
+
+function resizePlaceholder() {
+
+}
+
+$(window).ready(function() {
+	createSlideshowAttributes();
+});
+
+function createSlideshowAttributes() {
+	var allSlideshows = document.getElementsByClassName('story-container');
+
+	for (var i = 0; i < allSlideshows.length; i++) {
+		
+		var numberOfSlides = allSlideshows[i].children.length;
+		allSlideshows[i].setAttribute("data-number-of-slides", numberOfSlides);
+		allSlideshows[i].setAttribute("data-current-slide", 0)
+	}
+
+	console.dir(allSlideshows);
+	//target all slideshows
+	//find number of children for each slideshow
+	//apply attributes to children of each slideshow
 }
