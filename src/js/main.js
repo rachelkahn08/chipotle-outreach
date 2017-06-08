@@ -23,16 +23,16 @@ function pageLoadListeners() {
 	for (var i = 0; i < allButtons.length; i++) {
 		allButtons[i]
 		if (allButtons[i].classList.contains('previous-button')) {
-			allButtons[i].addEventListener('click', showPreviousStorySection);
+			allButtons[i].addEventListener('click', showPreviousSlide);
 		} else if (allButtons[i].classList.contains('next-button')) {
-			allButtons[i].addEventListener('click', showNextStorySection);
+			allButtons[i].addEventListener('click', showNextSlide);
 		}
 	}
 }
 
 pageLoadListeners();
 
-function showPreviousStorySection(e) {
+function showPreviousSlide(e) {
 	var storyToMove = this.parentElement.children[0];
 	var currentSlide = storyToMove.dataset.currentSlide;
 		currentSlide = currentSlide - 0;
@@ -55,10 +55,10 @@ function showPreviousStorySection(e) {
 		nextButton.style.display = 'initial';
 	}
 	
-	repositionSlideshow(storyToMove);
+	changeSlide(storyToMove);
 }
 
-function showNextStorySection(e) {
+function showNextSlide(e) {
 	
 	var storyToMove = this.parentElement.children[0];
 	var currentSlide = storyToMove.dataset.currentSlide;
@@ -81,10 +81,10 @@ function showNextStorySection(e) {
 		previousButton.style.display = 'initial';
 	}
 	
-	repositionSlideshow(storyToMove);
+	changeSlide(storyToMove);
 }
 
-function repositionSlideshow(e) {
+function changeSlide(e) {
 	var viewportWidth = document.documentElement.clientWidth;
 	var numberOfSlides = e.dataset.numberOfSlides;
 	var currentSlide = e.dataset.currentSlide;
@@ -93,10 +93,15 @@ function repositionSlideshow(e) {
 }
 
 //-------------reposition on page resize-------------
-$(window).resize(resizePlaceholder);
+// $(window).resize(resizePlaceholder);
 
-function resizePlaceholder() {
+function repositionSlideshows() {
+	var allSlideshows = document.getElementsByClassName('story-container');
 
+	for (var i = 0; i < allSlideshows.length; i++) {
+		console.log(allSlideshows[i].dataset.currentSlide);
+		changeSlide(allSlideshows[i]);
+	}
 }
 
 $(window).ready(function() {
@@ -109,6 +114,7 @@ function createSlideshowAttributes() {
 	for (var i = 0; i < allSlideshows.length; i++) {
 		
 		var numberOfSlides = allSlideshows[i].children.length;
+		console.log(numberOfSlides);
 		allSlideshows[i].setAttribute("data-number-of-slides", numberOfSlides);
 		allSlideshows[i].setAttribute("data-current-slide", 0)
 	}
