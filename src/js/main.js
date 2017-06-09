@@ -21,12 +21,23 @@
 function pageLoadListeners() {
 	var allButtons = document.getElementsByClassName('story-button');
 	for (var i = 0; i < allButtons.length; i++) {
-		allButtons[i]
 		if (allButtons[i].classList.contains('previous-button')) {
 			allButtons[i].addEventListener('click', showPreviousSlide);
 		} else if (allButtons[i].classList.contains('next-button')) {
 			allButtons[i].addEventListener('click', showNextSlide);
 		}
+	}
+}
+
+function createSlideshowAttributes() {
+	var allSlideshows = document.getElementsByClassName('story-container');
+
+	for (var i = 0; i < allSlideshows.length; i++) {
+		
+		var numberOfSlides = allSlideshows[i].children.length;
+		console.log(numberOfSlides);
+		allSlideshows[i].setAttribute("data-number-of-slides", numberOfSlides);
+		allSlideshows[i].setAttribute("data-current-slide", 0);
 	}
 }
 
@@ -44,18 +55,16 @@ function showPreviousSlide(e) {
 		
 	storyToMove.setAttribute("data-current-slide", currentSlide);
 
-	var nextButton = this.parentElement.childNodes[3];
+	var nextButton = this.parentElement.children[2];
 
 
-	if (currentSlide == 0) {
+	if (currentSlide === 0) {
 		this.style.display = 'none';		
 	} 
 
-	if (currentSlide < 0) {
-		nextButton.style.display = 'initial';
+	if (currentSlide < slideshowLength) {
+		nextButton.style.display = 'inline';
 	}
-	
-	changeSlide(storyToMove);
 }
 
 function showNextSlide(e) {
@@ -64,7 +73,6 @@ function showNextSlide(e) {
 	var currentSlide = storyToMove.dataset.currentSlide;
 		currentSlide = currentSlide - 0;
 		currentSlide++;
-		console.log(currentSlide);
 
 	var slideshowLength = storyToMove.dataset.numberOfSlides;
 		slideshowLength = slideshowLength - 0;
@@ -80,8 +88,6 @@ function showNextSlide(e) {
 	if (currentSlide > 0) {
 		previousButton.style.display = 'initial';
 	}
-	
-	changeSlide(storyToMove);
 }
 
 function changeSlide(e) {
@@ -99,7 +105,6 @@ function repositionSlideshows() {
 	var allSlideshows = document.getElementsByClassName('story-container');
 
 	for (var i = 0; i < allSlideshows.length; i++) {
-		console.log(allSlideshows[i].dataset.currentSlide);
 		changeSlide(allSlideshows[i]);
 	}
 }
@@ -108,19 +113,4 @@ $(window).ready(function() {
 	createSlideshowAttributes();
 });
 
-function createSlideshowAttributes() {
-	var allSlideshows = document.getElementsByClassName('story-container');
 
-	for (var i = 0; i < allSlideshows.length; i++) {
-		
-		var numberOfSlides = allSlideshows[i].children.length;
-		console.log(numberOfSlides);
-		allSlideshows[i].setAttribute("data-number-of-slides", numberOfSlides);
-		allSlideshows[i].setAttribute("data-current-slide", 0)
-	}
-
-	console.dir(allSlideshows);
-	//target all slideshows
-	//find number of children for each slideshow
-	//apply attributes to children of each slideshow
-}

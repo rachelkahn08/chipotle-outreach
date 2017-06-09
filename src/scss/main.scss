@@ -110,7 +110,7 @@ html, body {
 }
 
 .story {
-	width: 100%;
+	width: 100vw;
 	position: relative;
 	transition: 0.2s;
 	overflow: hidden;
@@ -157,7 +157,6 @@ html, body {
 		width: 100%;
 		height: 100%;
 		vertical-align: top;
-		overflow: hidden;
 		margin: 0;
 		
 		.story-container__page--image {
@@ -176,7 +175,6 @@ html, body {
 
 	.story-container__page--text {
 		height: 100%;
-		width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
