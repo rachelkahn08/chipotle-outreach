@@ -12,32 +12,97 @@ $camel: #a96744;
 
 html, body {
 	height: 100%;
-	width: 100%;
 	background-color: $lightCream;
+	min-width: 300px;
+	width: 100%;
 }
 
-.navigation {
-	display: flex;
+
+header {
+	width: 100%;
+	height: 70px;
 	background-color: $burntSienna;
 	color: white;
 	border-bottom: 2px solid $camel;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	text-transform: lowercase;
+	overflow: hidden;
 
-	.navigation__link {
-		padding: 30px;
-		text-transform: lowercase;
+	.hamburger-menu {
+		margin-right: 15px;
+		height: 40px;
+		width: 40px;
+		background-image: url(../img/hamburger-icon.svg);
+		background-size: fill;
+		background-repeat:  no-repeat;
+		background-position: center;
 
-		&.active {
-			color: $camel;
-			&:hover {
+		@include breakpoint(smallTabletLandscape) {
+			display: none;
+		}
+	}
+
+	.mobile-navigation {
+		transform: 0;
+		transition: 0.2s;
+		position: absolute;
+		top: 70px;
+		background-color: $burntSienna;
+		z-index: 2;
+		display: none;
+
+		.navigation__link {
+			padding: 20px;
+
+			&.active {
 				color: $camel;
+				&:hover {
+					color: $camel;
+				}
+			}
+
+			&:hover {
+				color: $brightRed;
 			}
 		}
 
-		&:hover {
-			color: $brightRed;
+		&.hidden {
+			transform: translate(100%);
 		}
 	}
+
+	.navigation {
+		display: none;
+
+		@include breakpoint(smallTabletLandscape) {
+			width: 100%;
+			display: flex;
+
+			.navigation__link {
+				padding: 20px;
+
+				&.active {
+					color: $camel;
+					&:hover {
+						color: $camel;
+					}
+				}
+
+				&:hover {
+					color: $brightRed;
+				}
+			}
+
+			&.hidden {
+				transform: translate(100%);
+			}
+		}
+	}	
 }
+
 
 .italic-serif {
 	font-style: italic;
@@ -60,6 +125,8 @@ html, body {
 	background-color: white;
 	height: 300px;
 	position: relative;
+	overflow: hidden;
+	border-bottom: 2px solid $lightCream;
 
 	.slider__background-image {
 		position: absolute;
@@ -78,29 +145,63 @@ html, body {
 		font-size: 1.5rem;
 		padding: 30px 35px 30px 35px;
 		margin-top: 30px;
-		margin-left: 27%;
+		margin-left: 10%;
 		border: 2px solid $burntSienna;
 		color: $burntSienna;
+
+		@include breakpoint(smallTablet) {
+			margin-left: 20%;
+		}
+
+		@include breakpoint(largeTablet) {
+			margin-left: 25%;
+		}
+
+		@include breakpoint(largeTablet) {
+			margin-left: 30%;
+		}
 	}
 
 	.slider__container {
-		display: flex;
-		width: 100%;
-		padding: 12.5%;
-		justify-content: center;
+		margin-top: 170px;
+		padding-right: 10%;
+		height: 130px;
+		position: relative;
+		@include sliderSwipe();
+
+		@include breakpoint(smallTablet) {
+			padding-right: 20%;
+		}
+
+		@include breakpoint(smallTabletLandscape) {
+			margin-top: 215px;
+			padding-right: 18%;
+			
+		}
+
+		@include breakpoint(largeTablet) {
+			padding-right: 25%;
+		}
 	}
 
 	.slider__item {
-		position: absolute;
-		width: 100%;
-		padding: 20px;
 		color: $burntSienna;
 		font-size: 3.5rem;
-		margin-top: 35px;
 		display: none;
+		justify-content: flex-end;
+		align-items: center;
+
+		@include breakpoint(smallTablet) {
+			margin-left: 50%;
+		}
 
 		p {
-			margin-left: 50%;
+			text-align: right;
+			margin-left: 45%;
+
+			@include breakpoint(smallTabletLandscape) {
+				margin-left: 0;
+			}
 		}
 
 		&.visible {
@@ -112,52 +213,52 @@ html, body {
 .story {
 	width: 100vw;
 	position: relative;
-	transition: 0.2s;
 	overflow: hidden;
 
-	.story-mask {
-		height: 100%;
-		width: 100%;
-		overflow: hidden;
+	@include breakpoint(tiny) {
+		height: 50vh;
+	}
+
+	height: 60vh;
+
+	@include breakpoint(smallTablet) {
+		height: 70vh;
+	}
+
+	@include breakpoint(smallTabletLandscape) {
+		height: 80vh;
+	}
+
+	@include breakpoint(largeTablet) {
+		height: 80vh;
+	}
+
+	@include breakpoint(huge) {
+		height: 82vh;
 	}
 
 	.story-container {
-		height: 60vh;
-		width: 1000%;
+		transition: 1s;
+		transition-timing-function: ease-in-out;
+		height: 100%;
+		width: 100000000%;
 		position: relative;
-		display: inline;
-		white-space: nowrap;
 		overflow: visible;
 		transition: 0.2s;
-
-		@include breakpoint(tiny) {
-			height: 50vh;
-		}
-
-		@include breakpoint(smallTablet) {
-			height: 70vh;
-		}
-
-		@include breakpoint(smallTabletLandscape) {
-			height: 100vh;
-		}
-
-		@include breakpoint(largeTablet) {
-			height: 80vh;
-		}
-
-		@include breakpoint(desktop) {
-			height: 105vh;
-		}
+		min-width: 300px;
+		left: 0;
 	}
 
 	.story-container__page {
+		transition: 0s;
 		position: relative;
 		display: inline-block;
-		width: 100%;
+		white-space: nowrap;
+		width: 100vw;
 		height: 100%;
 		vertical-align: top;
 		margin: 0;
+		min-width: 300px;
 		
 		.story-container__page--image {
 			height: 100%;
@@ -165,11 +266,31 @@ html, body {
 			background-size: cover;
 			background-position: center;
 		}
+
+		.story-container__page--text {
+			white-space: pre-wrap;
+			text-align: center;
+		}
 	}
 
 	.story__farmers {
 		.story-container__page--image {
-			background-image: url(../img/barn.jpg);
+			&.barn-landscape {
+				background-image: url(../img/farm-landscape.jpeg);
+			}
+
+			&.farmer-woman-smiling {
+				background-image: url(../img/farmer-woman-smiling.jpeg);
+			}
+
+			&.farm-tractor {
+				background-image: url(../img/farm-tractor.jpeg);
+			}
+
+			&.farmer-man-smiling {
+				background-image: url(../img/farmer-man-smiling.jpeg);
+				background-position: top;
+			}
 		}
 	}
 
@@ -178,42 +299,156 @@ html, body {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		font-size: 1.5rem;
+		padding: 0 55px 0 55px;
+
+		@include breakpoint(tiny) {
+			padding: 25vw;
+			padding-top: 0;
+		}
+
+		@include breakpoint(smallTabletLandscape) {
+			padding: 100px;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
 	}
 }
 
-.story-button {
+
+.story-nav-container {
 	position: absolute;
 	z-index: 10;
-	top: 50%;
-	height: 300px;
-	width: 50px;
-	background-color: $burntSienna;
-	opacity: 0.4;
-	transition: 0.2s;
-	display: none;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 
-	&:hover {
-		opacity: 1;
-	}
-
-	&.visible {
-		display: initial
-	}
-	
-	&.previous-button{
-		left: 0;	
-		border-top-right-radius: 5px;
-		border-bottom-right-radius: 5px;
-		transform: translate(0, -50%);
+	@include breakpoint(tiny) {
+		justify-content: center;
 	}
 
-	&.next-button {
-		transform: translate(0, -50%);
-		right: 0;
-		border-top-left-radius: 5px;
-		border-bottom-left-radius: 5px;	
+	.nav-button-container {
+		overflow: hidden;
+		position: relative;
+		display: flex;
+		justify-content: flex-end;
+		background-color: rgba(69, 20, 0, 0.65);
+		opacity: 0.4;
+
+		@include breakpoint(smallTabletLandscape) {
+
+		}
+
+		&.visible {
+			opacity: 1;
+
+			.story-button {
+				&:hover {
+					background-color: $burntSienna;
+					opacity: 1;
+				}
+			}
+		}
+
+		&.previous {
+			flex-direction: row-reverse;
+			border-top-left-radius: 5px;
+
+			@include breakpoint(tiny) {
+				border-radius: 0;
+			}
+		}
+
+		&.next {				
+			@include breakpoint(tiny) {
+				border-radius: 0;
+			}
+
+			border-top-right-radius: 5px;
+		}
 	}
+
+	.story-button {
+		transition: 0.2s;
+		height: 100%;
+		opacity: 0.65;
+
+		.story-nav-icon {
+			height: 65%;
+			width: 65%;
+			margin: 17.5%;
+			border-radius: 50%;
+			border: 2px solid $lightCream;
+			background-size: 80% 80%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+
+		&.previous-button {
+			
+			.story-nav-icon {
+				background-image: url(../img/backward.svg);
+			}
+
+			&.skip-backward {
+				.story-nav-icon {
+					background-image: url(../img/skip-backward.svg);
+				}
+
+			}
+		}
+
+		&.next-button {
+			
+			.story-nav-icon {
+				background-image: url(../img/forward.svg);	
+			}
+
+			&.skip-forward {
+			
+				.story-nav-icon {
+					background-image: url(../img/skip-forward.svg);
+				}
+			}
+		}
+		
+		@include breakpoint(tiny) {
+			height: 25vw;
+			width: 25vw;
+			min-height: 50px;
+			min-width: 50px;
+		}
+
+		@include breakpoint(smallTablet) {
+			height: 85px;
+			width: 85px;
+		}
+
+		@include breakpoint(smallTabletLandscape) {
+			height: 100px;
+			width: 100px;
+		}
+
+		height: 80px;
+		width: 80px;
+	}	
 }
+
+footer {
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: $burntSienna;
+	padding-right: 5%;
+	color: $camel;
+	border-top: 2px solid $brightRed;
+}
+
 
 
 

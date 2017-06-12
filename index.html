@@ -11,6 +11,14 @@
 	</head>
 	<body>
 		<header>
+			<figure id="hamburgerButton" class="hamburger-menu"></figure>
+			<ul id="navBarMobile" class="mobile-navigation hidden">
+				<li class="navigation__link italic-serif active">Home</li>
+				<li class="navigation__link italic-serif">Our Foundation</li>
+				<li class="navigation__link italic-serif">Initiatives</li>
+				<li class="navigation__link italic-serif">Grants &amp; Partnerships</li>
+				<li class="navigation__link italic-serif">Get Involved</li>
+			</ul>
 			<ul id="navBar" class="navigation">
 				<li class="navigation__link italic-serif active">Home</li>
 				<li class="navigation__link italic-serif">Our Foundation</li>
@@ -18,32 +26,30 @@
 				<li class="navigation__link italic-serif">Grants &amp; Partnerships</li>
 				<li class="navigation__link italic-serif">Get Involved</li>
 			</ul>
-
-			<div class="header--title">
-				<figure class="logo"></figure>
-				<h1 class="italic-serif">the <span class="sans-serif foundation-name">chipotle cultivate</span> foundation</h1>
-			</div">
-
 		</header>
-		
+		<div class="header--title">
+			<figure class="logo"></figure>
+			<h1 class="italic-serif">the <span class="sans-serif foundation-name">chipotle cultivate</span> foundation</h1>
+		</div>
+
 		<section class="slider">
 			<figure class="slider__background-image"></figure>
 			<h2 class="italic-serif">our <span class="sans-serif bold">mission</span></h2>
-			<ul class="slider__container">
+			<ul id="sliderContainer" class="slider__container">
 				<li class="slider__item visible">
 					<p class="italic-serif"> for farmers </p>
 				</li>
-				<li class="slider__item">		<p class="italic-serif"> for animals</p>
-					</figure>
+				<li class="slider__item">		
+					<p class="italic-serif"> for animals</p>
 				</li>
-				<li class="slider__item">		<p class="italic-serif"> for the environment</p>
-					</figure>
+				<li class="slider__item">		
+					<p class="italic-serif"> for the environment</p>
 				</li>
-				<li class="slider__item">		<p class="italic-serif"> for education</p>
-					</figure>
+				<li class="slider__item">		
+					<p class="italic-serif"> for education</p>
 				</li>
-				<li class="slider__item">		<p class="italic-serif"> for nutrition</p>
-					</figure>
+				<li class="slider__item">		
+					<p class="italic-serif"> for nutrition</p>
 				</li>
 			</ul>
 		</section>
@@ -51,91 +57,58 @@
 		<section class="story">
 			<ul class="story-container story__farmers">
 				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li><!--
-				--><li class="story-container__page text">
-					<div class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</div>
+					<figure class="story-container__page--image barn-landscape"></figure>
 				</li><!--
 				--><li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
+					<p class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</p>
 				</li><!--
 				--><li class="story-container__page">
-					<div class="italic-serif story-container__page--text">This is the VERY LAST SLIDE.</div>
+					<figure class="story-container__page--image farmer-man-smiling"></figure>
+				</li><!--
+				--><li class="story-container__page">
+					<p class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</p>
+				</li><!--
+				--><li class="story-container__page">
+					<figure class="story-container__page--image farm-tractor"></figure>
+				</li><!--
+				--><li class="story-container__page">
+					<p class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</p>
+				</li><!--
+				--><li class="story-container__page">
+					<figure class="story-container__page--image farmer-woman-smiling"></figure>
+				</li><!--
+				--><li class="story-container__page">
+					<p class="italic-serif story-container__page--text">This is THE VERY LAST SLIDE.</p>
 				</li>
 			</ul>
-			<div class="story-button previous-button"></div>
-			<div class="story-button next-button visible"></div>
+			<div class="story-nav-container">
+				<div class="nav-button-container previous">
+					<div class="story-button previous-button">
+						<figure class="story-nav-icon"></figure>
+					</div>
+					<div class="story-button previous-button skip-backward">
+						<figure class="story-nav-icon"></figure>
+					</div>
+				</div>
+				<div class="nav-button-container next visible">
+					<div class="story-button next-button">
+						<figure class="story-nav-icon"></figure>
+					</div>
+					<div class="story-button next-button skip-forward">
+						<figure class="story-nav-icon"></figure>
+					</div>
+				</div>
+			</div>
 		</section>
-		<section class="story">
-			<ul class="story-container story__farmers">
-				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li>
-				<li class="story-container__page">
-					<div class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</div>
-				</li>
-				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li>
-			</ul>
-			<div class="story-button previous-button"></div>
-			<div class="story-button next-button visible"></div>
-		</section>
-		<section class="story">
-			<ul class="story-container story__farmers">
-				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li>
-				<li class="story-container__page">
-					<div class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</div>
-				</li>
-				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li>
-				<li class="story-container__page">
-					<p class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</p>
-				</li>
-				<li class="story-container__page">
-					<p class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</p>
-				</li>
-			</ul>
-			<div class="story-button previous-button"></div>
-			<div class="story-button next-button visible"></div>
-		</section>
-		<section class="story">
-			<ul class="story-container story__farmers">
-				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li>
-				<li class="story-container__page">
-					<div class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</div>
-				</li>
-				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li>
-				<li class="story-container__page">
-					<p class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</p>
-				</li>
-				<li class="story-container__page">
-					<div class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</div>
-				</li>
-				<li class="story-container__page">
-					<figure class="story-container__page--image"></figure>
-				</li>
-				<li class="story-container__page">
-					<p class="italic-serif story-container__page--text">This is some placeholder text that will eventually become information about the story it's telling.</p>
-				</li>
-			</ul>
-			<div class="story-button previous-button"></div>
-			<div class="story-button next-button visible"></div>
-		</section>
-
-
 
 		<figure></figure>
 		<section></section>
 
-		<footer>FOOTER</footer>
+		<footer>
+			<div class="copyright">
+				&copy; 2017 Rachel Kahn
+			</div>
+		</footer>
 
 		<script
 		  src="https://code.jquery.com/jquery-3.2.1.min.js"

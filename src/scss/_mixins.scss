@@ -1,6 +1,6 @@
 @mixin breakpoint($width) {
 	@if $width == tiny {
-		@media (max-width: 320px) { @content; }
+		@media (max-width: 340px) { @content; }
 	}
 
 	@if $width == smallTablet {
@@ -20,6 +20,20 @@
 	}
 
 	@if $width == huge {
-		@media (min-width: 1281px) { @content; }
+		@media (min-width: 1280px) { @content; }
 	}
+}
+
+@keyframes sliderSwipe {
+	0% { left: 100%; }
+	10% { left: 0%; }
+	90% { left: 0%; }
+	100% { left: -100%; }
+}
+
+@mixin sliderSwipe() {
+	animation-name: sliderSwipe;
+	animation-duration: 7s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
 }
